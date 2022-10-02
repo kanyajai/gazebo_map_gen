@@ -1,0 +1,6 @@
+<launch>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+    <param name="map_description" command="rosrun xacro xacro $(find gazebo_map_gen)/urdf/office.urdf" />
+    <node name="spawn_map" pkg="gazebo_ros" type="spawn_model" args="-urdf -param map_description -model map" />
+    <!-- <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find ciiba_quad_description)/models/iris_with_ardupilot/model.sdf -model iris_demo" /> -->
+</launch>

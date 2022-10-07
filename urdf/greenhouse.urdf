@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="map">
+    <link name="world" />
+    <link name="map">
+        <inertial>
+            <origin
+                xyz="0.067274018583116 0.0880833956310821 0.266360765908856"
+                rpy="0 0 0" />
+            <mass
+                value="0.836963110255319" />
+            <inertia
+                ixx="0.00106335845473399"
+                ixy="7.67604151878634E-19"
+                ixz="-0.000107375897241633"
+                iyy="0.00191609616852056"
+                iyz="5.45480655662458E-19"
+                izz="0.00106153032973399" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://gazebo_map_gen/models/greenhouse.dae" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://gazebo_map_gen/models/greenhouse.dae" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="world_map_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="world" />
+        <child link="map" />
+    </joint>
+</robot>

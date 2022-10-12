@@ -3,7 +3,9 @@
     <!--gazebo launch  -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch" />
     <param name="map_description" command="rosrun xacro xacro $(find gazebo_map_gen)/urdf/house.urdf" />
-    <node name="spawn_map" pkg="gazebo_ros" type="spawn_model" args="-urdf -param map_description -model map" />
+    <node name="spawn_map" pkg="gazebo_ros" type="spawn_model" args="-urdf -param map_description -z 0.01 -model map" />
+    <param name="robot_description" command="$(find xacro)/xacro $(find gazebo_map_gen)/urdf/turtlebot3_waffle.urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot3_waffle -x 7 -y 8 -z 0.1 -Y 1.58 -param robot_description" /> 
     <!-- <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find ciiba_quad_description)/models/iris_with_ardupilot/model.sdf -model iris_demo" /> -->
 
     <!-- turtlebot spawn-->

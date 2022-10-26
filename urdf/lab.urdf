@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="map">
+    <link name="world" />
+    <link name="map">
+        <inertial>
+            <origin
+                xyz="5 5 0"
+                rpy="0 0 0" />
+            <mass
+                value="100" />
+            <inertia
+                ixx="166.67"
+                ixy="0.00"
+                ixz="0.00"
+                iyy="166.67"
+                iyz="0.00"
+                izz="166.67" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://gazebo_map_gen/models/lab.dae" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://gazebo_map_gen/models/lab.dae" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="world_map_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="world" />
+        <child link="map" />
+    </joint>
+</robot>

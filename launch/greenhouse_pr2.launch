@@ -1,0 +1,11 @@
+<launch>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+    <param name="map_description" command="rosrun xacro xacro $(find gazebo_map_gen)/urdf/greenhouse.urdf" />
+    <node name="spawn_map" pkg="gazebo_ros" type="spawn_model" args="-urdf -param map_description -model map" />
+    <arg name="KINECT1" default="true" />
+    <arg name="KINECT2" default="true" />
+    <include file="$(find pr2_gazebo)/launch/pr2.launch">
+        <arg name="KINECT1" value="$(arg KINECT1)" />
+        <arg name="KINECT2" value="$(arg KINECT2)" />
+    </include>
+</launch>

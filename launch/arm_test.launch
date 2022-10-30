@@ -1,0 +1,16 @@
+<launch>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/empty.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <param name="robot_description" command="rosrun xacro xacro $(find gazebo_map_gen)/urdf/turtlebot3_waffle_with_arm.xacro" />
+  <param name="robot_arm_description" command="rosrun xacro xacro $(find kuka_kr5_support)/urdf/kr5_arc.xacro" />
+
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_robot_urdf" args="-urdf -model turtlebot3_waffle_with_panda_arm -x 0 -y 0 -param robot_description" />
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_arm_urdf" args="-urdf -model kuka_arm -x 0 -y 0 -param robot_arm_description" />
+</launch>

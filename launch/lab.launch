@@ -3,5 +3,5 @@
     <param name="map_description" command="rosrun xacro xacro $(find gazebo_map_gen)/urdf/lab.urdf" />
     <node name="spawn_map" pkg="gazebo_ros" type="spawn_model" args="-urdf -param map_description -model map" />
     <param name="robot_description" command="$(find xacro)/xacro --inorder $(find gazebo_map_gen)/urdf/turtlebot3_waffle.urdf.xacro" />
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot3_waffle -x 1 -y 1 -z 0.2 -param robot_description" /> 
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot3_waffle -x 2 -y 2 -z 1.0 -param robot_description" /> 
 </launch>

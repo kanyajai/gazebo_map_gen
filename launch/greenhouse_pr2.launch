@@ -2,6 +2,10 @@
     <include file="$(find gazebo_ros)/launch/empty_world.launch" />
     <param name="map_description" command="rosrun xacro xacro $(find gazebo_map_gen)/urdf/greenhouse.urdf" />
     <node name="spawn_map" pkg="gazebo_ros" type="spawn_model" args="-urdf -param map_description -model map" />
-    <param name="robot_description" command="$(find xacro)/xacro $(find gazebo_map_gen)/urdf/turtlebot3_waffle.urdf.xacro" />
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot3_waffle -x -10 -y -7 -param robot_description" /> 
+    <arg name="KINECT1" default="true" />
+    <arg name="KINECT2" default="true" />
+    <include file="$(find pr2_gazebo)/launch/pr2.launch">
+        <arg name="KINECT1" value="$(arg KINECT1)" />
+        <arg name="KINECT2" value="$(arg KINECT2)" />
+    </include>
 </launch>
